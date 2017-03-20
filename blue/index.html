@@ -94,102 +94,41 @@
 
   $(document).ready(function(){
 
-  $('#exp').css({ opacity: 0.05 });
-  $('#exp2').css({ opacity: 0.05 });
-  $('#exp3').css({ opacity: 0.05 });
-  $('#exp4').css({ opacity: 0.05 });
-  $('#get').css({ opacity: 0.05 });
-  $('#get2').css({ opacity: 0.05 });
-  $('#about').css({ opacity: 0.05 });
-  $('#about2').css({ opacity: 0.05 });
-  $('#about3').css({ opacity: 0.05 });
-  $('#about4').css({ opacity: 0.05 });
-  $('#about5').css({ opacity: 0.05 });
-  $('#about6').css({ opacity: 0.05 });
-  $('#about7').css({ opacity: 0.05 });
-  $('#about8').css({ opacity: 0.05 });
-  $('#get3').css({ opacity: 0.05 });
-  $('#get4').css({ opacity: 0.05 });
+// Find all YouTube videos
+var $allVideos = $("iframe[src^='//www.youtube.com']"),
 
+    // The element that is fluid width
+    $fluidEl = $("body");
 
-$('#navabout').on('click', function() {
-  $('#exp').css({ opacity: 0.05 });
-  $('#exp2').css({ opacity: 0.05 });
-  $('#exp3').css({ opacity: 0.05 });
-  $('#exp4').css({ opacity: 0.05 });
-  $('#get').css({ opacity: 0.05 });
-  $('#get2').css({ opacity: 0.05 });
-  $('#about').css({ opacity: 1 });
-  $('#about2').css({ opacity: 1 });
-  $('#about3').css({ opacity: 1 });
-  $('#about4').css({ opacity: 1 });
-  $('#about5').css({ opacity: 1 });
-  $('#about6').css({ opacity: 1 });
-  $('#about7').css({ opacity: 1 });
-  $('#about8').css({ opacity: 1 });
-  $('#get3').css({ opacity: 0.05 });
-  $('#get4').css({ opacity: 0.05 });
-                          });
+// Figure out and save aspect ratio for each video
+$allVideos.each(function() {
 
-$('#navget').on('click', function() {
-  $('#exp').css({ opacity: 0.05 });
-  $('#exp2').css({ opacity: 0.05 });
-  $('#exp3').css({ opacity: 0.05 });
-  $('#exp4').css({ opacity: 0.05 });
-  $('#get').css({ opacity: 1 });
-  $('#get2').css({ opacity: 1 });
-  $('#about').css({ opacity: 0.05 });
-  $('#about2').css({ opacity: 0.05 });
-  $('#about3').css({ opacity: 0.05 });
-  $('#about4').css({ opacity: 0.05 });
-  $('#about5').css({ opacity: 0.05 });
-  $('#about6').css({ opacity: 0.05 });
-  $('#about7').css({ opacity: 0.05 });
-  $('#about8').css({ opacity: 0.05 });
-  $('#get3').css({ opacity: 1 });
-  $('#get4').css({ opacity: 1 });
+  $(this)
+    .data('aspectRatio', this.height / this.width)
+
+    // and remove the hard coded width/height
+    .removeAttr('height')
+    .removeAttr('width');
+
 });
 
-$('#navexp').on('click', function() {
-  $('#exp').css({ opacity: 1 });
-  $('#exp2').css({ opacity: 1 });
-  $('#exp3').css({ opacity: 1 });
-  $('#exp4').css({ opacity: 1 });
-  $('#get').css({ opacity: 0.05 });
-  $('#get2').css({ opacity: 0.05 });
-  $('#about').css({ opacity: 0.05 });
-  $('#about2').css({ opacity: 0.05 });
-  $('#about3').css({ opacity: 0.05 });
-  $('#about4').css({ opacity: 0.05 });
-  $('#about5').css({ opacity: 0.05 });
-  $('#about6').css({ opacity: 0.05 });
-  $('#about7').css({ opacity: 0.05 });
-  $('#about8').css({ opacity: 0.05 });
-  $('#get3').css({ opacity: 0.05 });
-  $('#get4').css({ opacity: 0.05 });
-});
+// When the window is resized
+$(window).resize(function() {
 
-var previousScroll = 0,
-headerOrgOffset = $('#header').offset().top;
+  var newWidth = $fluidEl.width();
 
-$('#header-wrap').height($('#header').height());
+  // Resize all videos according to their own aspect ratio
+  $allVideos.each(function() {
 
-$(window).scroll(function() {
- var currentScroll = $(this).scrollTop();
- console.log(currentScroll + " and " + previousScroll + " and " + headerOrgOffset);
- if(currentScroll > headerOrgOffset) {
-  if (currentScroll > previousScroll) {
-    $('#header').fadeOut();
-  } else {
-    $('#header').fadeIn();
-    $('#header').addClass('fixed');
-  }
-} else {
- $('#header').removeClass('fixed');   
-}
-previousScroll = currentScroll;
-});
+    var $el = $(this);
+    $el
+      .width(newWidth)
+      .height(newWidth * $el.data('aspectRatio'));
 
+  });
+
+// Kick off one resize to fix all videos on page load
+}).resize();
 
 });
 

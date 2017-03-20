@@ -1,0 +1,199 @@
+@import "compass/css3";
+
+@font-face {
+  font-family: "founder";
+  src:url("founder.otf");
+}
+
+@font-face {
+  font-family: "founderitalic";
+  src:url("founderitalic.otf");
+}
+
+@font-face {
+  font-family: "suisse";
+  src:url("suisse.otf");
+}
+
+
+body {
+	padding: 0;
+	margin: 0 auto;
+	background: white;
+  	overflow-x: hidden;
+}
+
+html, body {
+    height: 100%;
+ 	overflow: hidden;
+ 	margin: 0;
+}
+
+
+.biggestcontainer {
+	width: 100%;
+	height: 85%;
+	margin: 0 auto;
+	position: relative;
+
+}
+
+.container {
+	top: 10%;
+	margin: 0 auto;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+
+}
+
+.nav{
+	padding-left: 2%;
+	width:100%;
+	height:7%;
+	position: relative;
+	float: left;
+}
+
+.logo{
+	padding-top:1.5%;
+	width:3%;
+	position:relative;
+	float: left;
+}
+
+
+.navigation {
+	padding-top: 2%;
+	width: 54%;
+	padding-left: 38%;
+	padding-right: 5%;
+    position: relative;
+    float:left;
+
+}
+
+.navigation a{
+	text-decoration: none;
+	font-family: 'suisse';
+	font-size: .4em;
+	color: #69d4d8;
+
+	}
+
+.navigation a:hover{
+	color:white;
+	background-color: #ff6600;
+	}
+
+
+#navlink {
+	text-decoration: none;
+	font-size: .5em;
+}
+
+#navlink2 {
+	text-decoration: none;
+	font-size: .5em;
+}
+
+
+#draggable{
+	width: 450px;
+	height: 100%;
+	left:30px;
+}
+
+.box1{
+	width: 40%;
+	height: 100%;
+	float:left;
+	overflow: scroll;
+	top:10px;
+
+}
+
+.box2{
+	width: 60%;
+	height: 100%;
+	float:left;
+	overflow: scroll;
+	top:10px;
+}
+
+.photocontainer{
+	left:5%;
+	position: relative;
+	max-width: 90%;
+    height: auto;
+    width: auto\9
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+}
+
+
+
+p {
+	padding-left: 5%;
+	padding-right: 10%;
+	font-size: .8em;
+	line-height: 1.5em;
+	font-family: 'founder';
+	color: #1a1a1a;
+}
+
+.imagebox {
+	padding-left: 5%;
+	padding-right: 5%;
+	position:relative;
+	max-width: 100%;
+    height: auto;
+    width: auto\9;
+}
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	left: 5%;
+	width: 90%;
+	height: 90%;
+}
+
+.headline {
+	padding-left: 5%;
+	padding-right: 5%;
+	font-family: 'founderitalic';
+	font-size: 1em;
+	color: #1a1a1a;
+
+}
+
+.headline2 {
+	padding-left: 5%;
+	padding-right: 5%;
+	font-family: 'suisse';
+	font-size: 1em;
+	line-height: 1.4em;
+	color: #1a1a1a;
+
+}
+
+.divider {
+	padding-left:5%;
+	padding-right:5%;
+	width: 80%;
+	margin: 0 auto;
+	height: 2px;
+	background-color: black;
+	position: relative;
+}
